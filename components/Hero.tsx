@@ -99,7 +99,7 @@ export function Hero() {
         >
           <Link
             href="/scholarships#give"
-            className="group flex min-h-13 items-center rounded-full bg-wine-lit px-8 font-semibold text-chalk transition-colors duration-300 hover:bg-wine-glow"
+            className="group flex min-h-13 items-center rounded-full bg-wine px-8 font-semibold text-chalk transition-colors duration-300 hover:bg-wine-lit"
           >
             Fund a scholarship
             <span

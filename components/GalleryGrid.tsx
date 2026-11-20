@@ -106,7 +106,7 @@ function GalleryLink({ weekend }: { weekend: Weekend }) {
         href={weekend.galleryUrl}
         target="_blank"
         rel="noopener"
-        className="group inline-flex items-center gap-2 rounded-full bg-wine-lit px-7 py-4 text-sm font-semibold text-chalk shadow-lg transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-glow"
+        className="group inline-flex items-center gap-2 rounded-full bg-wine px-7 py-4 text-sm font-semibold text-chalk shadow-lg transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-lit"
       >
         Open the {weekend.year} gallery
         <span
@@ -125,7 +125,7 @@ function GalleryLink({ weekend }: { weekend: Weekend }) {
       href={`mailto:${SITE.email}?subject=${encodeURIComponent(
         `Photo request: ${weekend.label}`,
       )}`}
-      className="group inline-flex items-center gap-2 rounded-full bg-wine-lit px-7 py-4 text-sm font-semibold text-chalk shadow-lg transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-glow"
+      className="group inline-flex items-center gap-2 rounded-full bg-wine px-7 py-4 text-sm font-semibold text-chalk shadow-lg transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-lit"
     >
       Request the {weekend.year} photos
       <span

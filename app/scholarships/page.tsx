@@ -95,7 +95,7 @@ export default function ScholarshipsPage() {
           </div>
 
           <Reveal delay={160}>
-            <div className="rounded-3xl bg-wine-lit p-8 text-chalk md:p-10">
+            <div className="rounded-3xl bg-wine p-8 text-chalk md:p-10">
               <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-wine-glow">
                 One award
               </p>
@@ -108,7 +108,7 @@ export default function ScholarshipsPage() {
               </p>
               <a
                 href={`mailto:${SITE.email}?subject=Scholarship%20gift`}
-                className="group mt-8 inline-block rounded-full bg-wine-lit px-7 py-4 text-sm font-semibold text-chalk transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-glow"
+                className="group mt-8 inline-block rounded-full bg-wine px-7 py-4 text-sm font-semibold text-chalk transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-lit"
               >
                 Start a gift
                 <span
@@ -224,7 +224,7 @@ export default function ScholarshipsPage() {
             </dl>
             <a
               href={`mailto:${SITE.email}?subject=Sponsorship%20enquiry`}
-              className="mt-8 inline-block rounded-full bg-wine-lit px-7 py-4 text-sm font-semibold text-white transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-deep"
+              className="mt-8 inline-block rounded-full bg-wine px-7 py-4 text-sm font-semibold text-white transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-deep"
             >
               Request the sponsorship deck
             </a>

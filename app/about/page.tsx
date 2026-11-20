@@ -154,7 +154,7 @@ export default function AboutPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/scholarships#give"
-                className="rounded-full bg-wine-lit px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-deep"
+                className="rounded-full bg-wine px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-deep"
               >
                 Give to the fund
               </Link>

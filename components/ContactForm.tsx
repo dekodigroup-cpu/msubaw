@@ -228,7 +228,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="group mt-7 flex min-h-12 w-full items-center justify-center bg-wine-lit px-7 font-semibold text-chalk transition-colors duration-300 hover:bg-wine-deep sm:w-auto"
+        className="group mt-7 flex min-h-12 w-full items-center justify-center bg-wine px-7 font-semibold text-chalk transition-colors duration-300 hover:bg-wine-deep sm:w-auto"
       >
         Send message
         <span

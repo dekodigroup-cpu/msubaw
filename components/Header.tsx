@@ -69,7 +69,7 @@ export function Header() {
           ))}
           <Link
             href="/scholarships#give"
-            className="flex min-h-11 items-center rounded-full bg-wine-lit px-6 text-[0.85rem] font-semibold text-chalk transition-colors duration-300 hover:bg-wine-glow"
+            className="flex min-h-11 items-center rounded-full bg-wine px-6 text-[0.85rem] font-semibold text-chalk transition-colors duration-300 hover:bg-wine-lit"
           >
             Give
           </Link>
@@ -124,7 +124,7 @@ export function Header() {
             </ul>
             <Link
               href="/scholarships#give"
-              className="mt-6 block rounded-full bg-wine-lit px-6 py-4 text-center font-semibold text-chalk"
+              className="mt-6 block rounded-full bg-wine px-6 py-4 text-center font-semibold text-chalk"
             >
               Give to the scholarship fund
             </Link>
