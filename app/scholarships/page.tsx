@@ -74,41 +74,41 @@ export default function ScholarshipsPage() {
       />
 
       {/* The direct answer, first. */}
-      <Section tone="deep">
+      <Section tone="pitch">
         <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
           <div>
             <SectionHeading
               eyebrow="What your money does"
               title="A thousand dollars, handed to a student who is already here."
             />
-            <Reveal as="p" delay={180} className="mt-6 leading-relaxed text-ink-soft/90">
+            <Reveal as="p" delay={180} className="mt-6 leading-relaxed text-ash/90">
               Black Alumni Weekend is a fundraiser with a reunion attached. The
               proceeds, meaning tickets, sponsorships, gala table sales and
               direct gifts, move into a scholarship fund administered by the{" "}
               {SCHOLARSHIP.beneficiary}. Awards are {SCHOLARSHIP.award} each and
               go to Mississippi State students.
             </Reveal>
-            <Reveal as="p" delay={240} className="mt-5 leading-relaxed text-ink-soft/90">
+            <Reveal as="p" delay={240} className="mt-5 leading-relaxed text-ash/90">
               The weekend is run by alumni volunteers, which is the reason the
               money reaches students rather than administration.
             </Reveal>
           </div>
 
           <Reveal delay={160}>
-            <div className="rounded-3xl bg-maroon p-8 text-paper-deep md:p-10">
-              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-brass">
+            <div className="rounded-3xl bg-wine-lit p-8 text-chalk md:p-10">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-wine-glow">
                 One award
               </p>
               <p className="mt-4 font-display text-6xl font-semibold text-white">
                 {SCHOLARSHIP.award}
               </p>
-              <p className="mt-4 leading-relaxed text-paper-edge">
+              <p className="mt-4 leading-relaxed text-ash">
                 The size of a single Black Alumni Weekend scholarship. Fund one
                 outright, or add to the pool toward the next.
               </p>
               <a
                 href={`mailto:${SITE.email}?subject=Scholarship%20gift`}
-                className="group mt-8 inline-block rounded-full bg-brass px-7 py-4 text-sm font-semibold text-ink transition-colors duration-300 hover:-translate-y-0.5 hover:bg-chalk"
+                className="group mt-8 inline-block rounded-full bg-wine-lit px-7 py-4 text-sm font-semibold text-chalk transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-glow"
               >
                 Start a gift
                 <span
@@ -131,23 +131,23 @@ export default function ScholarshipsPage() {
           lede="No portal, no account to create. Each route is an email away, and we answer."
         />
 
-        <div className="mt-14 grid gap-px overflow-hidden rounded-3xl bg-paper-edge md:grid-cols-3">
+        <div className="mt-14 grid gap-px overflow-hidden rounded-3xl bg-void-edge md:grid-cols-3">
           {WAYS.map((w, i) => (
             <Reveal key={w.id} delay={i * 90}>
               <article
                 id={w.id}
-                className="flex h-full flex-col bg-paper p-8 transition-colors duration-500 hover:bg-white md:p-9"
+                className="flex h-full flex-col bg-void p-8 transition-colors duration-500 hover:bg-white md:p-9"
               >
-                <p className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-maroon-lit">
+                <p className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-wine-glow">
                   {w.amount}
                 </p>
-                <h3 className="mt-3 font-display text-2xl text-ink">
+                <h3 className="mt-3 font-display text-2xl text-chalk">
                   {w.label}
                 </h3>
-                <p className="mt-4 flex-1 leading-relaxed text-ink-soft">
+                <p className="mt-4 flex-1 leading-relaxed text-ash">
                   {w.body}
                 </p>
-                <p className="mt-6 border-t border-paper-edge pt-5 text-sm leading-relaxed text-ink-soft">
+                <p className="mt-6 border-t border-slate pt-5 text-sm leading-relaxed text-ash">
                   {w.action}
                 </p>
               </article>
@@ -156,22 +156,22 @@ export default function ScholarshipsPage() {
         </div>
 
         <Reveal delay={160} className="mt-12">
-          <div className="rounded-2xl border border-paper-edge bg-paper-deep p-7 md:p-9">
-            <h3 className="font-display text-xl text-ink">
+          <div className="rounded-2xl border border-slate bg-pitch p-7 md:p-9">
+            <h3 className="font-display text-xl text-chalk">
               Prefer to talk it through?
             </h3>
-            <p className="mt-3 max-w-2xl leading-relaxed text-ink-soft">
+            <p className="mt-3 max-w-2xl leading-relaxed text-ash">
               Call{" "}
               <a
                 href={`tel:${SITE.phone}`}
-                className="link-draw font-semibold text-maroon"
+                className="link-draw font-semibold text-wine-glow"
               >
                 {SITE.phoneDisplay}
               </a>{" "}
               or email{" "}
               <a
                 href={`mailto:${SITE.email}`}
-                className="link-draw font-semibold text-maroon"
+                className="link-draw font-semibold text-wine-glow"
               >
                 {SITE.email}
               </a>
@@ -183,7 +183,7 @@ export default function ScholarshipsPage() {
       </Section>
 
       {/* Sponsor section anchor target with detail */}
-      <Section tone="deep" id="sponsor">
+      <Section tone="pitch" id="sponsor">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <SectionHeading
             eyebrow="For companies"
@@ -191,7 +191,7 @@ export default function ScholarshipsPage() {
             lede="Black Alumni Weekend draws alumni across engineering, business, medicine, education, government and the trades back to one campus for four days."
           />
           <Reveal delay={140}>
-            <dl className="divide-y divide-paper-edge border-t border-paper-edge">
+            <dl className="divide-y divide-slate border-t border-slate">
               {[
                 {
                   t: "Career expo & mixer",
@@ -215,8 +215,8 @@ export default function ScholarshipsPage() {
                 },
               ].map((item) => (
                 <div key={item.t} className="py-5">
-                  <dt className="font-display text-lg text-ink">{item.t}</dt>
-                  <dd className="mt-1.5 text-sm leading-relaxed text-ink-soft">
+                  <dt className="font-display text-lg text-chalk">{item.t}</dt>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-ash">
                     {item.d}
                   </dd>
                 </div>
@@ -224,7 +224,7 @@ export default function ScholarshipsPage() {
             </dl>
             <a
               href={`mailto:${SITE.email}?subject=Sponsorship%20enquiry`}
-              className="mt-8 inline-block rounded-full bg-maroon px-7 py-4 text-sm font-semibold text-white transition-colors duration-300 hover:-translate-y-0.5 hover:bg-maroon-deep"
+              className="mt-8 inline-block rounded-full bg-wine-lit px-7 py-4 text-sm font-semibold text-white transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-deep"
             >
               Request the sponsorship deck
             </a>

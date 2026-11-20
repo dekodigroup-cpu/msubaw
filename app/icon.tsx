@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 
-/** Favicon: maroon ground, brass "M". */
+/** Favicon: near-black ground, burgundy "B" for Black Alumni Weekend. */
 export default function Icon() {
   return new ImageResponse(
     (
@@ -14,15 +14,15 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#4a0f14",
-          color: "#e0b367",
+          backgroundColor: "#151011",
+          color: "#C85767",
           fontSize: 44,
           fontWeight: 700,
-          fontFamily: "Georgia, serif",
+          fontFamily: "Helvetica, Arial, sans-serif",
           letterSpacing: -1,
         }}
       >
-        M
+        B
       </div>
     ),
     size,

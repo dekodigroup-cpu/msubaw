@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { LogoMark } from "./Logo";
 import { NAV } from "@/lib/site";
 
 export function Header() {
@@ -11,7 +12,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -38,37 +39,29 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 bg-paper transition-[border-color,box-shadow] duration-500 ${
-        scrolled
-          ? "border-b border-paper-edge shadow-[0_1px_2px_oklch(23%_0.015_32/0.04),0_8px_24px_oklch(23%_0.015_32/0.05)]"
-          : "border-b border-transparent"
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-500 ${
+        scrolled || open
+          ? "border-b border-slate bg-void/92 backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
       <div className="container-page flex h-(--header-h) items-center justify-between gap-6">
         <Link
           href="/"
-          className="group flex items-baseline gap-2.5 py-2"
-          aria-label="MSU Black Alumni, home"
+          className="py-2"
+          aria-label="Black Alumni Weekend, home"
         >
-          <span
-            aria-hidden="true"
-            className="font-display text-[1.35rem] font-bold leading-none text-maroon"
-          >
-            MSU
-          </span>
-          <span className="eyebrow text-ink-soft">Black Alumni</span>
+          <LogoMark variant="white" />
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               aria-current={isActive(item.href) ? "page" : undefined}
               className={`link-draw flex min-h-11 items-center text-[0.9rem] font-medium transition-colors duration-300 ${
-                isActive(item.href)
-                  ? "text-maroon"
-                  : "text-ink-soft hover:text-maroon"
+                isActive(item.href) ? "text-chalk" : "text-ash hover:text-chalk"
               }`}
             >
               {item.label}
@@ -76,7 +69,7 @@ export function Header() {
           ))}
           <Link
             href="/scholarships#give"
-            className="flex min-h-11 items-center bg-maroon px-5 text-[0.85rem] font-semibold text-chalk transition-colors duration-300 hover:bg-maroon-deep"
+            className="flex min-h-11 items-center rounded-full bg-wine-lit px-6 text-[0.85rem] font-semibold text-chalk transition-colors duration-300 hover:bg-wine-glow"
           >
             Give
           </Link>
@@ -85,7 +78,7 @@ export function Header() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="-mr-2 flex size-11 items-center justify-center text-ink transition-colors duration-200 hover:text-maroon md:hidden"
+          className="-mr-2 flex size-11 items-center justify-center text-chalk transition-colors duration-200 hover:text-wine-glow md:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -111,7 +104,7 @@ export function Header() {
       </div>
 
       <div id="mobile-nav" hidden={!open} className="md:hidden">
-        <div className="border-t border-paper-edge bg-paper px-5 pb-8 pt-2">
+        <div className="border-t border-slate bg-void px-5 pb-8 pt-2">
           <nav aria-label="Mobile">
             <ul>
               {NAV.map((item, i) => (
@@ -120,8 +113,8 @@ export function Header() {
                     href={item.href}
                     aria-current={isActive(item.href) ? "page" : undefined}
                     style={{ animationDelay: `${i * 45}ms` }}
-                    className={`animate-in block border-b border-paper-edge py-4 font-display text-xl transition-colors duration-200 ${
-                      isActive(item.href) ? "text-maroon" : "text-ink"
+                    className={`animate-in block border-b border-slate py-4 font-display text-2xl font-semibold tracking-tight transition-colors duration-200 ${
+                      isActive(item.href) ? "text-wine-glow" : "text-chalk"
                     }`}
                   >
                     {item.label}
@@ -131,7 +124,7 @@ export function Header() {
             </ul>
             <Link
               href="/scholarships#give"
-              className="mt-6 block bg-maroon px-6 py-4 text-center font-semibold text-chalk"
+              className="mt-6 block rounded-full bg-wine-lit px-6 py-4 text-center font-semibold text-chalk"
             >
               Give to the scholarship fund
             </Link>

@@ -7,42 +7,39 @@ import { SITE } from "@/lib/site";
 import { JsonLd, graph, organizationSchema, webSiteSchema } from "@/lib/schema";
 
 /**
- * Self-hosted variable woff2, latin subset, served from our own origin and
- * preloaded. No request to fonts.googleapis.com: one fewer connection on
- * the critical path and no third-party surface.
- *
- * Besley is a Clarendon-style slab serif carrying the letterpress-programme
- * reference. Instrument Sans handles body copy. Neither is an AI-default
- * face (see DESIGN.md).
+ * Space Grotesk and Work Sans are both already in use on the live
+ * msubaw.com, so the rebuild keeps the brand's own voice rather than
+ * importing a new one. Self-hosted variable woff2, latin subset, preloaded:
+ * no request to fonts.googleapis.com.
  */
-const besley = localFont({
+const grotesk = localFont({
   src: [
     {
-      path: "./fonts/besley-latin-wght-normal.woff2",
-      weight: "400 800",
+      path: "./fonts/space-grotesk-latin-wght-normal.woff2",
+      weight: "300 700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-grotesk",
+  display: "swap",
+  preload: true,
+  fallback: ["Helvetica Neue", "Arial", "sans-serif"],
+});
+
+const work = localFont({
+  src: [
+    {
+      path: "./fonts/work-sans-latin-wght-normal.woff2",
+      weight: "100 900",
       style: "normal",
     },
     {
-      path: "./fonts/besley-latin-wght-italic.woff2",
-      weight: "400 800",
+      path: "./fonts/work-sans-latin-wght-italic.woff2",
+      weight: "100 900",
       style: "italic",
     },
   ],
-  variable: "--font-besley",
-  display: "swap",
-  preload: true,
-  fallback: ["Georgia", "Times New Roman", "serif"],
-});
-
-const instrument = localFont({
-  src: [
-    {
-      path: "./fonts/instrument-sans-latin-wght-normal.woff2",
-      weight: "400 700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-instrument",
+  variable: "--font-work",
   display: "swap",
   preload: true,
   fallback: ["Helvetica Neue", "Arial", "sans-serif"],
@@ -102,32 +99,32 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  // Matches --color-paper. Browser zoom is deliberately left enabled.
-  themeColor: "#fcfaf7",
+  // Matches --color-void. Browser zoom is deliberately left enabled.
+  themeColor: "#151011",
   width: "device-width",
   initialScale: 1,
-  colorScheme: "light",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-US" className={`${besley.variable} ${instrument.variable}`}>
+    <html lang="en-US" className={`${grotesk.variable} ${work.variable}`}>
       <head>
         <JsonLd data={graph(organizationSchema(), webSiteSchema())} />
       </head>
       <body className="min-h-dvh">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:bg-maroon focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-chalk"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:bg-wine-lit focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-chalk"
         >
           Skip to content
         </a>
 
         <Header />
 
-        <main id="main" className="pt-[var(--header-h)]">
+        <main id="main">
           {children}
         </main>
 

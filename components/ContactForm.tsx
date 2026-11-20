@@ -95,14 +95,14 @@ export function ContactForm() {
   }
 
   const base =
-    "mt-2 w-full border bg-paper px-4 py-3.5 text-ink transition-colors duration-200 placeholder:text-ink-faint focus:border-maroon focus:outline-none";
-  const ok = `${base} border-paper-edge`;
-  const bad = `${base} border-maroon-lit`;
-  const labelCls = "eyebrow block text-ink-faint";
+    "mt-2 w-full border bg-void px-4 py-3.5 text-chalk transition-colors duration-200 placeholder:text-smoke focus:border-wine-lit focus:outline-none";
+  const ok = `${base} border-slate`;
+  const bad = `${base} border-wine-glow`;
+  const labelCls = "eyebrow block text-smoke";
 
   const err = (f: FieldName) =>
     errors[f] ? (
-      <p id={`cf-${f}-error`} className="mt-2 text-sm text-maroon">
+      <p id={`cf-${f}-error`} className="mt-2 text-sm text-wine-glow">
         {errors[f]}
       </p>
     ) : null;
@@ -116,13 +116,13 @@ export function ContactForm() {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="border border-paper-edge bg-paper p-7 md:p-9"
+      className="border border-slate bg-void p-7 md:p-9"
       noValidate
     >
-      <h2 className="font-display text-2xl font-semibold text-ink">
+      <h2 className="font-display text-2xl font-semibold text-chalk">
         Send a message
       </h2>
-      <p className="mt-2.5 text-sm leading-relaxed text-ink-soft">
+      <p className="mt-2.5 text-sm leading-relaxed text-ash">
         This opens your email app with the message ready to send, so you keep a
         copy in your sent folder.
       </p>
@@ -130,7 +130,7 @@ export function ContactForm() {
       <div className="mt-7 space-y-5">
         <div>
           <label className={labelCls} htmlFor="cf-name">
-            Name <span className="text-maroon-lit">(required)</span>
+            Name <span className="text-wine-glow">(required)</span>
           </label>
           <input
             id="cf-name"
@@ -147,7 +147,7 @@ export function ContactForm() {
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
             <label className={labelCls} htmlFor="cf-email">
-              Email <span className="text-maroon-lit">(required)</span>
+              Email <span className="text-wine-glow">(required)</span>
             </label>
             <input
               id="cf-email"
@@ -164,7 +164,7 @@ export function ContactForm() {
           </div>
           <div>
             <label className={labelCls} htmlFor="cf-phone">
-              Phone <span className="text-ink-faint">(optional)</span>
+              Phone <span className="text-smoke">(optional)</span>
             </label>
             <input
               id="cf-phone"
@@ -198,7 +198,7 @@ export function ContactForm() {
 
         <div>
           <label className={labelCls} htmlFor="cf-message">
-            Message <span className="text-maroon-lit">(required)</span>
+            Message <span className="text-wine-glow">(required)</span>
           </label>
           <textarea
             id="cf-message"
@@ -214,11 +214,11 @@ export function ContactForm() {
       </div>
 
       {sent && (
-        <p role="status" className="mt-5 text-sm text-ink-soft">
+        <p role="status" className="mt-5 text-sm text-ash">
           Your email app should have opened. If it did not, write to{" "}
           <a
             href={`mailto:${SITE.email}`}
-            className="link-draw font-semibold text-maroon"
+            className="link-draw font-semibold text-wine-glow"
           >
             {SITE.email}
           </a>
@@ -228,7 +228,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="group mt-7 flex min-h-12 w-full items-center justify-center bg-maroon px-7 font-semibold text-chalk transition-colors duration-300 hover:bg-maroon-deep sm:w-auto"
+        className="group mt-7 flex min-h-12 w-full items-center justify-center bg-wine-lit px-7 font-semibold text-chalk transition-colors duration-300 hover:bg-wine-deep sm:w-auto"
       >
         Send message
         <span

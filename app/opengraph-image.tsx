@@ -3,14 +3,14 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { SITE, NEXT_WEEKEND } from "@/lib/site";
 
-export const alt = `${SITE.name}, ${SITE.tagline}`;
+export const alt = `${SITE.legalName}, ${SITE.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/** Social card, set in the same letterpress language as the site. */
+/** Social card in the dark brand language. */
 export default async function Image() {
-  const besley = await readFile(
-    join(process.cwd(), "assets/besley-latin-600-normal.woff"),
+  const grotesk = await readFile(
+    join(process.cwd(), "assets/space-grotesk-latin-700-normal.woff"),
   );
 
   return new ImageResponse(
@@ -22,22 +22,22 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: "72px 80px",
-          backgroundColor: "#3b0d12",
+          padding: "68px 76px",
+          backgroundColor: "#151011",
           backgroundImage:
-            "radial-gradient(120% 90% at 10% 0%, #5c1620 0%, #3b0d12 60%)",
-          color: "#faf6f0",
-          fontFamily: "Besley",
+            "radial-gradient(90% 80% at 14% 4%, #5A1725 0%, #151011 62%)",
+          color: "#F8F6F3",
+          fontFamily: "Grotesk",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div style={{ width: 64, height: 2, backgroundColor: "#e0b367" }} />
+        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+          <div style={{ width: 56, height: 2, backgroundColor: "#C85767" }} />
           <div
             style={{
-              fontSize: 22,
-              letterSpacing: 6,
+              fontSize: 19,
+              letterSpacing: 5,
               textTransform: "uppercase",
-              color: "#e0b367",
+              color: "#C85767",
             }}
           >
             Mississippi State University
@@ -45,19 +45,35 @@ export default async function Image() {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 92, lineHeight: 1.02, letterSpacing: -2 }}>
-            Celebrating
+          <div
+            style={{
+              fontSize: 118,
+              lineHeight: 0.88,
+              letterSpacing: -5,
+              textTransform: "uppercase",
+            }}
+          >
+            Black
           </div>
           <div
             style={{
-              fontSize: 92,
-              lineHeight: 1.02,
-              letterSpacing: -2,
-              color: "#e0b367",
-              fontStyle: "italic",
+              fontSize: 118,
+              lineHeight: 0.88,
+              letterSpacing: -5,
+              textTransform: "uppercase",
             }}
           >
-            Black Accomplishment
+            Alumni
+          </div>
+          <div
+            style={{
+              fontSize: 42,
+              marginTop: 10,
+              letterSpacing: 2,
+              color: "#D8CFC8",
+            }}
+          >
+            Weekend
           </div>
         </div>
 
@@ -66,24 +82,24 @@ export default async function Image() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-end",
-            borderTop: "1px solid rgba(250,246,240,0.22)",
-            paddingTop: 28,
-            fontSize: 26,
+            borderTop: "1px solid rgba(248,246,243,0.18)",
+            paddingTop: 26,
+            fontSize: 25,
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <div style={{ color: "#e0b367", fontSize: 19, letterSpacing: 4 }}>
+            <div style={{ color: "#C85767", fontSize: 17, letterSpacing: 4 }}>
               NEXT REUNION
             </div>
-            <div>{`${NEXT_WEEKEND.label}, ${NEXT_WEEKEND.dateDisplay}`}</div>
+            <div>{`${NEXT_WEEKEND.hashtag}, ${NEXT_WEEKEND.dateDisplay}`}</div>
           </div>
-          <div style={{ color: "#dec9b8" }}>msubaw.com</div>
+          <div style={{ color: "#9A8F88" }}>msubaw.com</div>
         </div>
       </div>
     ),
     {
       ...size,
-      fonts: [{ name: "Besley", data: besley, style: "normal", weight: 600 }],
+      fonts: [{ name: "Grotesk", data: grotesk, style: "normal", weight: 700 }],
     },
   );
 }

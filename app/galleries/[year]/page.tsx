@@ -87,18 +87,18 @@ export default async function GalleryYearPage({
       />
 
       {/* Highlights — extractable list of what actually happened. */}
-      <Section tone="deep">
+      <Section tone="pitch">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <SectionHeading
             eyebrow="On the schedule"
             title={`What ${w.hashtag} included.`}
           />
           <Reveal delay={140}>
-            <ul className="grid gap-px overflow-hidden rounded-2xl bg-paper-edge sm:grid-cols-2">
+            <ul className="grid gap-px overflow-hidden rounded-2xl bg-void-edge sm:grid-cols-2">
               {w.highlights.map((h) => (
                 <li
                   key={h}
-                  className="bg-paper p-6 text-sm leading-relaxed text-ink"
+                  className="bg-void p-6 text-sm leading-relaxed text-chalk"
                 >
                   {h}
                 </li>
@@ -123,26 +123,26 @@ export default async function GalleryYearPage({
       </Section>
 
       {/* Other years */}
-      <Section tone="deep">
+      <Section tone="pitch">
         <SectionHeading eyebrow="Keep going" title="Other weekends." />
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           {others.map((o, i) => (
             <Reveal key={o.slug} delay={i * 80}>
               <Link
                 href={`/galleries/${o.slug}`}
-                className="group flex items-center justify-between gap-6 rounded-2xl border border-paper-edge bg-paper p-7 transition-colors duration-500 hover:-translate-y-1 hover:border-maroon/30 hover:bg-white hover:shadow-lg"
+                className="group flex items-center justify-between gap-6 rounded-2xl border border-slate bg-void p-7 transition-colors duration-500 hover:-translate-y-1 hover:border-wine-lit/30 hover:bg-white hover:shadow-lg"
               >
                 <div>
-                  <p className="font-display text-3xl font-semibold text-maroon">
+                  <p className="font-display text-3xl font-semibold text-wine-glow">
                     {o.year}
                   </p>
-                  <p className="mt-1.5 text-sm text-ink-soft">
+                  <p className="mt-1.5 text-sm text-ash">
                     {o.theme ?? o.label}
                   </p>
                 </div>
                 <span
                   aria-hidden="true"
-                  className="text-sm font-semibold text-maroon transition-transform duration-300 group-hover:translate-x-1.5"
+                  className="text-sm font-semibold text-wine-glow transition-transform duration-300 group-hover:translate-x-1.5"
                 >
                   →
                 </span>

@@ -73,7 +73,7 @@ export default function ContactPage() {
         ]}
       />
 
-      <Section tone="deep">
+      <Section tone="pitch">
         <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
           <div>
             <SectionHeading
@@ -85,19 +85,19 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <a
                   href={`mailto:${SITE.email}`}
-                  className="group flex items-center justify-between gap-6 rounded-2xl border border-paper-edge bg-paper p-6 transition-colors duration-300 hover:-translate-y-0.5 hover:border-maroon/40 hover:bg-white"
+                  className="group flex items-center justify-between gap-6 rounded-2xl border border-slate bg-void p-6 transition-colors duration-300 hover:-translate-y-0.5 hover:border-wine-lit/40 hover:bg-white"
                 >
                   <span>
-                    <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-maroon-lit">
+                    <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-wine-glow">
                       Email
                     </span>
-                    <span className="mt-1.5 block break-all font-display text-lg text-ink">
+                    <span className="mt-1.5 block break-all font-display text-lg text-chalk">
                       {SITE.email}
                     </span>
                   </span>
                   <span
                     aria-hidden="true"
-                    className="shrink-0 text-maroon transition-transform duration-300 group-hover:translate-x-1"
+                    className="shrink-0 text-wine-glow transition-transform duration-300 group-hover:translate-x-1"
                   >
                     →
                   </span>
@@ -105,19 +105,19 @@ export default function ContactPage() {
 
                 <a
                   href={`tel:${SITE.phone}`}
-                  className="group flex items-center justify-between gap-6 rounded-2xl border border-paper-edge bg-paper p-6 transition-colors duration-300 hover:-translate-y-0.5 hover:border-maroon/40 hover:bg-white"
+                  className="group flex items-center justify-between gap-6 rounded-2xl border border-slate bg-void p-6 transition-colors duration-300 hover:-translate-y-0.5 hover:border-wine-lit/40 hover:bg-white"
                 >
                   <span>
-                    <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-maroon-lit">
+                    <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-wine-glow">
                       Phone
                     </span>
-                    <span className="mt-1.5 block font-display text-lg text-ink">
+                    <span className="mt-1.5 block font-display text-lg text-chalk">
                       {SITE.phoneDisplay}
                     </span>
                   </span>
                   <span
                     aria-hidden="true"
-                    className="shrink-0 text-maroon transition-transform duration-300 group-hover:translate-x-1"
+                    className="shrink-0 text-wine-glow transition-transform duration-300 group-hover:translate-x-1"
                   >
                     →
                   </span>
@@ -129,7 +129,7 @@ export default function ContactPage() {
                   href={SITE.social.facebook}
                   target="_blank"
                   rel="me noopener"
-                  className="link-draw font-semibold text-maroon"
+                  className="link-draw font-semibold text-wine-glow"
                 >
                   Facebook
                 </a>
@@ -137,7 +137,7 @@ export default function ContactPage() {
                   href={SITE.social.instagram}
                   target="_blank"
                   rel="me noopener"
-                  className="link-draw font-semibold text-maroon"
+                  className="link-draw font-semibold text-wine-glow"
                 >
                   Instagram
                 </a>
@@ -156,12 +156,12 @@ export default function ContactPage() {
           eyebrow="What people write in about"
           title="Six things we answer most."
         />
-        <dl className="mt-12 grid gap-px overflow-hidden rounded-3xl bg-paper-edge md:grid-cols-3">
+        <dl className="mt-12 grid gap-px overflow-hidden rounded-3xl bg-void-edge md:grid-cols-3">
           {REASONS.map((r, i) => (
             <Reveal key={r.t} delay={i * 70}>
-              <div className="h-full bg-paper p-7">
-                <dt className="font-display text-lg text-ink">{r.t}</dt>
-                <dd className="mt-2.5 text-sm leading-relaxed text-ink-soft">
+              <div className="h-full bg-void p-7">
+                <dt className="font-display text-lg text-chalk">{r.t}</dt>
+                <dd className="mt-2.5 text-sm leading-relaxed text-ash">
                   {r.d}
                 </dd>
               </div>

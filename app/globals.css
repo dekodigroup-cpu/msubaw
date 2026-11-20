@@ -1,55 +1,55 @@
 @import "tailwindcss";
 
 /* ======================================================================
-   MSU Black Alumni — commemorative letterpress programme
-   See DESIGN.md. All color in OKLCH, every neutral tinted toward the
-   maroon hue so the paper reads warm. No #000, no #fff anywhere.
+   MSU Black Alumni Weekend — dark, cinematic, photographic.
+   Colour sampled from the live msubaw.com DOM (see DESIGN.md).
+   All OKLCH. No #000, no #fff: blacks are tinted toward the burgundy
+   hue so photography sits in the page rather than on top of it.
    ====================================================================== */
 
 @theme {
-  /* Paper */
-  --color-paper: oklch(98.4% 0.006 62);
-  --color-paper-deep: oklch(96.2% 0.01 64);
-  --color-paper-edge: oklch(91% 0.013 58);
-  --color-paper-sunk: oklch(88% 0.015 56);
+  /* Ground */
+  --color-void: oklch(13% 0.008 20);
+  --color-pitch: oklch(17% 0.011 20);
+  --color-slate: oklch(24% 0.013 22);
+  --color-slate-soft: oklch(30% 0.014 22);
 
-  /* Ink */
-  --color-ink: oklch(23% 0.015 32);
-  --color-ink-soft: oklch(44% 0.014 34);
-  --color-ink-faint: oklch(58% 0.012 36);
+  /* Brand burgundy, sampled: #5A1725 */
+  --color-wine: oklch(32% 0.112 17);
+  --color-wine-deep: oklch(24% 0.09 17);
+  --color-wine-lit: oklch(47% 0.163 16);
+  --color-wine-glow: oklch(62% 0.195 18);
 
-  /* Maroon — Mississippi State */
-  --color-maroon: oklch(31% 0.128 29);
-  --color-maroon-deep: oklch(23% 0.098 29);
-  --color-maroon-lit: oklch(44% 0.158 26);
+  /* Type on dark */
+  --color-chalk: oklch(97% 0.004 70);
+  --color-ash: oklch(72% 0.008 40);
+  --color-smoke: oklch(55% 0.009 35);
 
-  /* Brass. Only ever on maroon, never on paper. */
-  --color-brass: oklch(77% 0.108 76);
-  --color-brass-deep: oklch(66% 0.112 72);
+  /* The one light surface */
+  --color-bone: oklch(96% 0.008 70);
+  --color-bone-deep: oklch(92% 0.011 68);
+  --color-bone-edge: oklch(86% 0.013 64);
+  --color-umber: oklch(28% 0.018 30);
+  --color-umber-soft: oklch(45% 0.015 32);
 
-  /* Text on maroon */
-  --color-chalk: oklch(97.5% 0.008 70);
-  --color-chalk-soft: oklch(88% 0.013 68);
-
-  --font-display: var(--font-besley), "Clarendon", Georgia, serif;
-  --font-sans: var(--font-instrument), "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-grotesk), "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-work), "Helvetica Neue", Arial, sans-serif;
 
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ---------------------------------------------------------------------- */
-/* Base                                                                   */
-/* ---------------------------------------------------------------------- */
 
 @layer base {
   :root {
-    color-scheme: light;
-    --header-h: 4.25rem;
+    color-scheme: dark;
+    --header-h: 4.5rem;
   }
 
   html {
     -webkit-text-size-adjust: 100%;
     scroll-padding-top: calc(var(--header-h) + 1.5rem);
+    background-color: var(--color-void);
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -59,11 +59,11 @@
   }
 
   body {
-    background-color: var(--color-paper);
-    color: var(--color-ink);
+    background-color: var(--color-void);
+    color: var(--color-ash);
     font-family: var(--font-sans);
     font-size: 1.0625rem;
-    line-height: 1.6;
+    line-height: 1.65;
     font-synthesis-weight: none;
     -webkit-font-smoothing: antialiased;
   }
@@ -73,9 +73,10 @@
   h3,
   h4 {
     font-family: var(--font-display);
+    color: var(--color-chalk);
     font-weight: 600;
-    letter-spacing: -0.015em;
-    line-height: 1.08;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
     text-wrap: balance;
   }
 
@@ -85,34 +86,37 @@
     text-wrap: pretty;
   }
 
-  /* Figures are compared across the site, so default to lining tabular. */
   time,
   .tnum {
     font-variant-numeric: tabular-nums lining-nums;
   }
 
   :focus-visible {
-    outline: 2.5px solid var(--color-maroon-lit);
+    outline: 2.5px solid var(--color-wine-glow);
     outline-offset: 3px;
     border-radius: 2px;
   }
 
-  /* On maroon grounds the maroon ring is invisible, so invert it. */
-  .on-maroon :focus-visible {
-    outline-color: var(--color-brass);
+  /* On the bone surface the glow is invisible, so darken the ring. */
+  .on-bone :focus-visible {
+    outline-color: var(--color-wine);
   }
 
   ::selection {
-    background-color: var(--color-maroon);
+    background-color: var(--color-wine-lit);
     color: var(--color-chalk);
   }
 
-  /* iOS zooms any input below 16px. Never go under. */
   input,
   select,
   textarea {
     font-size: max(1rem, 1em);
     font-family: inherit;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -123,44 +127,67 @@
 @utility container-page {
   width: 100%;
   margin-inline: auto;
-  max-width: 78rem;
+  max-width: 82rem;
   padding-inline: 1.25rem;
   @media (min-width: 768px) {
     padding-inline: 2.5rem;
   }
 }
 
-/* Body measure, capped for readability. */
 @utility measure {
-  max-width: 68ch;
+  max-width: 66ch;
 }
 
-@utility measure-tight {
-  max-width: 52ch;
+/* Uppercase micro-label, echoing the condensed weight of the logo. */
+@utility eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
 }
 
-/* Paper grain. Data URI, so no extra request. */
+/* The oversized display setting. Tight, mechanical, Space Grotesk. */
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+/* Film grain. Data URI, no extra request. */
 @utility grain-layer {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.04;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Eyebrow label, as used above section titles in a printed programme. */
-@utility eyebrow {
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
+/* Scrim that keeps text legible over any photograph. */
+@utility scrim-bottom {
+  background: linear-gradient(
+    to top,
+    oklch(13% 0.008 20) 0%,
+    oklch(13% 0.008 20 / 0.92) 22%,
+    oklch(13% 0.008 20 / 0.55) 48%,
+    oklch(13% 0.008 20 / 0.15) 75%,
+    transparent 100%
+  );
+}
+
+@utility scrim-full {
+  background: linear-gradient(
+    105deg,
+    oklch(13% 0.008 20 / 0.93) 0%,
+    oklch(13% 0.008 20 / 0.72) 42%,
+    oklch(13% 0.008 20 / 0.35) 100%
+  );
 }
 
 /* ---------------------------------------------------------------------- */
 /* Motion                                                                 */
-/* Only transform, opacity and filter. Never a layout property.           */
-/* No infinite autoplay: all movement is scroll, hover or focus driven.   */
 /* ---------------------------------------------------------------------- */
 
 @keyframes animationIn {
@@ -176,17 +203,14 @@
   }
 }
 
-/* Entrance for above-the-fold content, which needs no scroll trigger. */
 @utility animate-in {
   animation: animationIn 0.8s var(--ease-expo) both;
 }
 
 /*
-  Scroll reveal.
-
-  The hidden state is applied by JS only after it has confirmed it can
-  reveal the element again, so server-rendered HTML is fully visible to
-  crawlers, AI agents and no-JS visitors.
+  Scroll reveal. The hidden state is applied by JS only once it has
+  confirmed it can reveal the element again, so the server HTML stays
+  fully visible to crawlers, AI agents and no-JS visitors.
 */
 .reveal {
   opacity: 0;
@@ -205,7 +229,7 @@
   filter: blur(0);
 }
 
-/* Rule that draws itself under a link on hover or focus. */
+/* Rule that draws itself under a link. */
 .link-draw {
   position: relative;
 }
@@ -226,8 +250,6 @@
   transform: scaleX(1);
 }
 
-/* ---------------------------------------------------------------------- */
-/* Reduced motion                                                         */
 /* ---------------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

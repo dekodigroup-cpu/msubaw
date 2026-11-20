@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "./Logo";
 import { NAV, SITE, WEEKENDS } from "@/lib/site";
 
 export function Footer() {
@@ -9,23 +10,23 @@ export function Footer() {
   });
 
   return (
-    <footer className="on-maroon relative isolate overflow-hidden bg-maroon-deep text-chalk-soft">
+    <footer className="relative isolate overflow-hidden border-t border-slate bg-pitch text-ash">
       <div aria-hidden="true" className="grain-layer -z-10" />
 
       <div className="container-page py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <p className="font-display text-2xl text-chalk">{SITE.name}</p>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed">
+            <Logo variant="white" className="w-44 text-[1.9rem]" />
+            <p className="mt-6 max-w-xs text-sm leading-relaxed">
               {SITE.tagline}. Funding scholarships for Mississippi State
-              students, and bringing Bulldogs home to Starkville every two
+              students, and bringing Bulldogs back to Starkville every two
               years.
             </p>
             <ul className="mt-6 flex gap-5">
               <li>
                 <a
                   href={SITE.social.facebook}
-                  className="link-draw text-sm transition-colors duration-300 hover:text-brass"
+                  className="link-draw text-sm transition-colors duration-300 hover:text-chalk"
                   rel="me noopener"
                   target="_blank"
                 >
@@ -35,7 +36,7 @@ export function Footer() {
               <li>
                 <a
                   href={SITE.social.instagram}
-                  className="link-draw text-sm transition-colors duration-300 hover:text-brass"
+                  className="link-draw text-sm transition-colors duration-300 hover:text-chalk"
                   rel="me noopener"
                   target="_blank"
                 >
@@ -46,7 +47,7 @@ export function Footer() {
           </div>
 
           <nav aria-labelledby="ft-explore">
-            <h2 id="ft-explore" className="eyebrow font-sans text-brass">
+            <h2 id="ft-explore" className="eyebrow text-wine-glow">
               Explore
             </h2>
             <ul className="mt-5 space-y-3">
@@ -64,7 +65,7 @@ export function Footer() {
           </nav>
 
           <nav aria-labelledby="ft-weekends">
-            <h2 id="ft-weekends" className="eyebrow font-sans text-brass">
+            <h2 id="ft-weekends" className="eyebrow text-wine-glow">
               Past weekends
             </h2>
             <ul className="mt-5 space-y-3">
@@ -82,7 +83,7 @@ export function Footer() {
           </nav>
 
           <div>
-            <h2 className="eyebrow font-sans text-brass">Contact</h2>
+            <h2 className="eyebrow text-wine-glow">Contact</h2>
             <ul className="mt-5 space-y-3 text-sm">
               <li>
                 <a
@@ -107,7 +108,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-chalk/15 pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-slate pt-6 text-xs text-smoke sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {SITE.legalName}. All rights reserved.
           </p>

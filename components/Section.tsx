@@ -5,28 +5,35 @@ export function SectionHeading({
   eyebrow,
   title,
   lede,
+  tone = "dark",
 }: {
   eyebrow?: string;
   title: string;
   lede?: string;
+  tone?: "dark" | "light";
 }) {
+  const accent = tone === "dark" ? "text-wine-glow" : "text-wine";
+  const rule = tone === "dark" ? "bg-wine-glow" : "bg-wine";
+  const head = tone === "dark" ? "text-chalk" : "text-umber";
+  const body = tone === "dark" ? "text-ash" : "text-umber-soft";
+
   return (
     <div className="max-w-2xl">
       {eyebrow && (
         <Reveal className="flex items-center gap-4">
-          <span className="h-px w-10 bg-maroon-lit" aria-hidden="true" />
-          <p className="eyebrow text-maroon-lit">{eyebrow}</p>
+          <span className={`h-px w-10 ${rule}`} aria-hidden="true" />
+          <p className={`eyebrow ${accent}`}>{eyebrow}</p>
         </Reveal>
       )}
       <Reveal
         as="h2"
         delay={70}
-        className="mt-5 font-display text-[clamp(1.85rem,4vw,2.9rem)] font-semibold text-ink"
+        className={`display-xl mt-6 text-[clamp(2rem,4.6vw,3.4rem)] ${head}`}
       >
         {title}
       </Reveal>
       {lede && (
-        <Reveal as="p" delay={140} className="measure mt-5 text-lg leading-relaxed text-ink-soft">
+        <Reveal as="p" delay={140} className={`measure mt-6 text-lg leading-relaxed ${body}`}>
           {lede}
         </Reveal>
       )}
@@ -34,32 +41,30 @@ export function SectionHeading({
   );
 }
 
-/**
- * Section wrapper. Vertical rhythm is deliberately uneven across the page
- * (see DESIGN.md), so `pad` is set per section rather than fixed.
- */
+/** Vertical rhythm is deliberately uneven across the page (see DESIGN.md). */
 export function Section({
   children,
   className = "",
   id,
-  tone = "paper",
+  tone = "void",
   pad = "normal",
 }: {
   children: ReactNode;
   className?: string;
   id?: string;
-  tone?: "paper" | "deep";
+  tone?: "void" | "pitch" | "bone";
   pad?: "tight" | "normal" | "loose";
 }) {
   const tones = {
-    paper: "bg-paper",
-    deep: "bg-paper-deep",
+    void: "bg-void",
+    pitch: "bg-pitch",
+    bone: "on-bone bg-bone text-umber-soft",
   } as const;
 
   const pads = {
     tight: "py-16 md:py-20",
-    normal: "py-20 md:py-24",
-    loose: "py-24 md:py-32",
+    normal: "py-20 md:py-28",
+    loose: "py-24 md:py-36",
   } as const;
 
   return (

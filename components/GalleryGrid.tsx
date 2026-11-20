@@ -23,7 +23,7 @@ export function GalleryGrid({ weekend }: { weekend: Weekend }) {
           {photos.map((p, i) => (
             <Reveal key={p.src} delay={(i % 6) * 60}>
               <figure
-                className={`group relative overflow-hidden rounded-xl bg-paper-edge ${
+                className={`group relative overflow-hidden rounded-xl bg-void-edge ${
                   p.tall ? "row-span-2 aspect-[3/4]" : "aspect-[4/3]"
                 }`}
               >
@@ -52,7 +52,7 @@ export function GalleryGrid({ weekend }: { weekend: Weekend }) {
 
   return (
     <Reveal delay={120} className="mt-12">
-      <div className="grain relative isolate overflow-hidden rounded-3xl bg-maroon-deep p-9 text-paper-deep md:p-14">
+      <div className="relative isolate overflow-hidden rounded-3xl bg-wine-deep p-9 text-chalk md:p-14">
         <div aria-hidden="true" className="absolute inset-0 -z-10">
           <div
             className="animate-drift absolute -right-1/4 top-[-60%] h-[40rem] w-[40rem] rounded-full opacity-45"
@@ -64,15 +64,15 @@ export function GalleryGrid({ weekend }: { weekend: Weekend }) {
           <div className="grain-layer" />
         </div>
 
-        <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-brass">
+        <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-wine-glow">
           {weekend.hashtag} · Full set
         </p>
-        <h3 className="mt-4 max-w-xl font-display text-[clamp(1.6rem,3.4vw,2.4rem)] leading-tight text-white">
+        <h3 className="mt-4 max-w-xl display-xl text-[clamp(1.6rem,3.4vw,2.4rem)] leading-tight text-white">
           {weekend.galleryUrl
             ? "Browse every photograph from the weekend."
             : "Looking for photos from this weekend?"}
         </h3>
-        <p className="mt-5 max-w-xl leading-relaxed text-paper-edge">
+        <p className="mt-5 max-w-xl leading-relaxed text-ash">
           {weekend.galleryUrl ? (
             <>
               The complete high-resolution gallery is hosted externally, where
@@ -106,7 +106,7 @@ function GalleryLink({ weekend }: { weekend: Weekend }) {
         href={weekend.galleryUrl}
         target="_blank"
         rel="noopener"
-        className="group inline-flex items-center gap-2 rounded-full bg-brass px-7 py-4 text-sm font-semibold text-ink shadow-lg transition-colors duration-300 hover:-translate-y-0.5 hover:bg-chalk"
+        className="group inline-flex items-center gap-2 rounded-full bg-wine-lit px-7 py-4 text-sm font-semibold text-chalk shadow-lg transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-glow"
       >
         Open the {weekend.year} gallery
         <span
@@ -125,7 +125,7 @@ function GalleryLink({ weekend }: { weekend: Weekend }) {
       href={`mailto:${SITE.email}?subject=${encodeURIComponent(
         `Photo request: ${weekend.label}`,
       )}`}
-      className="group inline-flex items-center gap-2 rounded-full bg-brass px-7 py-4 text-sm font-semibold text-ink shadow-lg transition-colors duration-300 hover:-translate-y-0.5 hover:bg-chalk"
+      className="group inline-flex items-center gap-2 rounded-full bg-wine-lit px-7 py-4 text-sm font-semibold text-chalk shadow-lg transition-colors duration-300 hover:-translate-y-0.5 hover:bg-wine-glow"
     >
       Request the {weekend.year} photos
       <span

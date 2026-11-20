@@ -54,10 +54,10 @@ export default function GalleriesPage() {
             <Reveal key={w.slug} delay={i * 90}>
               <Link
                 href={`/galleries/${w.slug}`}
-                className="group block h-full overflow-hidden rounded-3xl border border-paper-edge bg-paper transition-colors duration-500 hover:-translate-y-1.5 hover:border-maroon/30 hover:shadow-xl"
+                className="group block h-full overflow-hidden rounded-3xl border border-slate bg-void transition-colors duration-500 hover:-translate-y-1.5 hover:border-wine-lit/30 hover:shadow-xl"
               >
                 {/* Year plate — typographic, no image dependency. */}
-                <div className="grain relative isolate overflow-hidden bg-maroon-deep px-7 py-14">
+                <div className="grain relative isolate overflow-hidden bg-wine-deep px-7 py-14">
                   <div aria-hidden="true" className="absolute inset-0 -z-10">
                     <div
                       className="absolute inset-0 opacity-60 transition-transform duration-[1200ms] group-hover:scale-110"
@@ -71,24 +71,24 @@ export default function GalleriesPage() {
                   <p className="font-display text-6xl font-semibold leading-none text-white">
                     {w.year}
                   </p>
-                  <p className="mt-3 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-brass">
+                  <p className="mt-3 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-wine-glow">
                     {w.hashtag}
                   </p>
                 </div>
 
                 <div className="p-7">
-                  <h3 className="font-display text-lg leading-snug text-ink">
+                  <h3 className="font-display text-lg leading-snug text-chalk">
                     {w.theme ?? w.label}
                   </h3>
-                  <p className="mt-2 text-sm text-ink-soft">
+                  <p className="mt-2 text-sm text-ash">
                     <time dateTime={w.startDate}>{w.dateDisplay}</time>
                   </p>
-                  <p className="mt-4 text-sm leading-relaxed text-ink-soft">
+                  <p className="mt-4 text-sm leading-relaxed text-ash">
                     {w.summary}
                   </p>
                   <span
                     aria-hidden="true"
-                    className="mt-6 inline-block text-sm font-semibold text-maroon transition-transform duration-300 group-hover:translate-x-1.5"
+                    className="mt-6 inline-block text-sm font-semibold text-wine-glow transition-transform duration-300 group-hover:translate-x-1.5"
                   >
                     Open gallery →
                   </span>
