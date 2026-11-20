@@ -46,7 +46,7 @@ export function Logo({
     <span className={`block ${className}`} role="img" aria-label={alt}>
       <span
         aria-hidden="true"
-        className={`eyebrow block text-[0.52em] ${tone.small}`}
+        className={`eyebrow block text-[0.2em] leading-tight ${tone.small}`}
       >
         Mississippi State University
       </span>
@@ -107,7 +107,7 @@ export function LogoMark({
       </span>
       <span
         aria-hidden="true"
-        className="text-[0.78rem] font-light italic tracking-wide text-wine-glow"
+        className="text-[0.78rem] font-light italic tracking-wide text-ash"
       >
         Weekend
       </span>
