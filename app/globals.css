@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+/* ======================================================================
+   MSU Black Alumni — commemorative letterpress programme
+   See DESIGN.md. All color in OKLCH, every neutral tinted toward the
+   maroon hue so the paper reads warm. No #000, no #fff anywhere.
+   ====================================================================== */
+
+@theme {
+  /* Paper */
+  --color-paper: oklch(98.4% 0.006 62);
+  --color-paper-deep: oklch(96.2% 0.01 64);
+  --color-paper-edge: oklch(91% 0.013 58);
+  --color-paper-sunk: oklch(88% 0.015 56);
+
+  /* Ink */
+  --color-ink: oklch(23% 0.015 32);
+  --color-ink-soft: oklch(44% 0.014 34);
+  --color-ink-faint: oklch(58% 0.012 36);
+
+  /* Maroon — Mississippi State */
+  --color-maroon: oklch(31% 0.128 29);
+  --color-maroon-deep: oklch(23% 0.098 29);
+  --color-maroon-lit: oklch(44% 0.158 26);
+
+  /* Brass. Only ever on maroon, never on paper. */
+  --color-brass: oklch(77% 0.108 76);
+  --color-brass-deep: oklch(66% 0.112 72);
+
+  /* Text on maroon */
+  --color-chalk: oklch(97.5% 0.008 70);
+  --color-chalk-soft: oklch(88% 0.013 68);
+
+  --font-display: var(--font-besley), "Clarendon", Georgia, serif;
+  --font-sans: var(--font-instrument), "Helvetica Neue", Arial, sans-serif;
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Base                                                                   */
+/* ---------------------------------------------------------------------- */
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --header-h: 4.25rem;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: calc(var(--header-h) + 1.5rem);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
+
+  /* Figures are compared across the site, so default to lining tabular. */
+  time,
+  .tnum {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  :focus-visible {
+    outline: 2.5px solid var(--color-maroon-lit);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* On maroon grounds the maroon ring is invisible, so invert it. */
+  .on-maroon :focus-visible {
+    outline-color: var(--color-brass);
+  }
+
+  ::selection {
+    background-color: var(--color-maroon);
+    color: var(--color-chalk);
+  }
+
+  /* iOS zooms any input below 16px. Never go under. */
+  input,
+  select,
+  textarea {
+    font-size: max(1rem, 1em);
+    font-family: inherit;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Utilities                                                              */
+/* ---------------------------------------------------------------------- */
+
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 78rem;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Body measure, capped for readability. */
+@utility measure {
+  max-width: 68ch;
+}
+
+@utility measure-tight {
+  max-width: 52ch;
+}
+
+/* Paper grain. Data URI, so no extra request. */
+@utility grain-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Eyebrow label, as used above section titles in a printed programme. */
+@utility eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Motion                                                                 */
+/* Only transform, opacity and filter. Never a layout property.           */
+/* No infinite autoplay: all movement is scroll, hover or focus driven.   */
+/* ---------------------------------------------------------------------- */
+
+@keyframes animationIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+/* Entrance for above-the-fold content, which needs no scroll trigger. */
+@utility animate-in {
+  animation: animationIn 0.8s var(--ease-expo) both;
+}
+
+/*
+  Scroll reveal.
+
+  The hidden state is applied by JS only after it has confirmed it can
+  reveal the element again, so server-rendered HTML is fully visible to
+  crawlers, AI agents and no-JS visitors.
+*/
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  filter: blur(8px);
+  transition:
+    opacity 0.8s var(--ease-expo),
+    transform 0.8s var(--ease-expo),
+    filter 0.8s var(--ease-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+}
+
+/* Rule that draws itself under a link on hover or focus. */
+.link-draw {
+  position: relative;
+}
+.link-draw::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.15em;
+  width: 100%;
+  height: 1.5px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s var(--ease-expo);
+}
+.link-draw:hover::after,
+.link-draw:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Reduced motion                                                         */
+/* ---------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+@media print {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
