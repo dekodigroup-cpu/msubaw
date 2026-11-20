@@ -191,8 +191,7 @@ export default function HomePage() {
               Every ticket becomes tuition.
             </Reveal>
             <Reveal as="p" delay={150} className="measure mt-6 text-lg leading-relaxed text-chalk-soft">
-              {SCHOLARSHIP.purpose} Awards are {SCHOLARSHIP.award} each, granted
-              through the {SCHOLARSHIP.beneficiary}.
+              {SCHOLARSHIP.purpose} Awards are {SCHOLARSHIP.award} each.
             </Reveal>
           </div>
 
